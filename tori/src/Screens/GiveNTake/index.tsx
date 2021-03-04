@@ -20,7 +20,7 @@ const GiveNTake = ({navigation}: Props) => {
             headerRight: () => (
                 <IconButton
                     iconName="search"
-                    onPress={()=> navigation.navigate('Search')}
+                    /* onPress={()=> navigation.navigate('Search')} */
                 />
             ),
             headerLeft: () => (
