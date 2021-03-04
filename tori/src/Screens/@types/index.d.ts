@@ -2,11 +2,7 @@ type HomeTabParamList = {
     Home: undefined;
 }
 
-type GiveNTakeTabParamList = {
+type GiveNTakeNaviParamList = {
     GiveNTake: undefined;
-    Search: undefined;
-}
-
-type SearcgNTakeTabParamList = {
     Search: undefined;
 }

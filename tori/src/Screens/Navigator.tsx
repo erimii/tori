@@ -36,29 +36,15 @@ const GiveNTakeTab = () => {
                 options={{title: 'GiveNTake'}}
             />
             <Stack.Screen
-                name="SearchTab"
+                name="Search"
                 component={Search}
                 options={{
-                    header:() => <SearchBar />,
+                    headerTitle:() => <SearchBar />,
                 }}
             />
         </Stack.Navigator>
     )
 }
-
-/* const SearchTab = () => {
-    return(
-        <Stack.Navigator>
-            <Stack.Screen
-                name="SearchTab"
-                component={Search}
-                options={{
-                    header:() => <SearchBar />,
-                }}
-            />
-        </Stack.Navigator>
-    )
-} */
 
 const MainTabs = () =>{
     return(

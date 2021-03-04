@@ -7,7 +7,7 @@ import {
 } from '@react-navigation/drawer';
 
 const Body = Styled.Text`
-  font-size:77px;
+  font-size:50px;
 `;
 
 interface Props{

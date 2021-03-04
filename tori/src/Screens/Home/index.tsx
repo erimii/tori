@@ -6,7 +6,7 @@ import {DrawerActions} from '@react-navigation/native';
 import IconButton from '~/Components/IconButton';
 
 const Body = Styled.Text`
-  font-size:77px;
+  font-size:50px;
 `;
 
 type NavigationProp = StackNavigationProp <HomeTabParamList, 'Home'>;

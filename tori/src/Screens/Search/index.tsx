@@ -1,25 +1,28 @@
-import React, {useLayoutEffect} from 'react';
+import React from 'react';
 import Styled from 'styled-components/native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {DrawerActions} from '@react-navigation/native';
+import {RouteProp} from '@react-navigation/native';
 
-import IconButton from '~/Components/IconButton';
+import SearchBar from '~/Components/SearchBar';
 
-const Body = Styled.Text`
-  font-size:77px;
+const Container = Styled.View`
+    margin-top:8px;
 `;
 
-/* type NavigationProp = StackNavigationProp <SearchTabParamList, 'Search'>;
-interface Props{
-    navigation: NavigationProp;
-} */
+const Explain = Styled.Text`
+    font-size:50px;
+`;
 
-const Search = () => {
+type SearchRouteProp = RouteProp <GiveNTakeNaviParamList, 'Search'>;
+interface Props{
+    route: SearchRouteProp;
+}
+
+const Search = ({route}: Props) => {
 
     return(
-        <Body>
-            Search
-        </Body>
+        <Container>
+            <Explain>Search</Explain>
+        </Container>
     );
 };
 

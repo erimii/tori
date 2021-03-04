@@ -5,11 +5,14 @@ import {DrawerActions} from '@react-navigation/native';
 
 import IconButton from '~/Components/IconButton';
 
-const Body = Styled.Text`
-  font-size:77px;
+const Container = Styled.SafeAreaView`
 `;
 
-type NavigationProp = StackNavigationProp <GiveNTakeTabParamList, 'GiveNTake'>;
+const Explain = Styled.Text`
+    font-size:50px;
+`;
+
+type NavigationProp = StackNavigationProp <GiveNTakeNaviParamList, 'GiveNTake'>;
 interface Props{
     navigation: NavigationProp;
 }
@@ -20,7 +23,7 @@ const GiveNTake = ({navigation}: Props) => {
             headerRight: () => (
                 <IconButton
                     iconName="search"
-                    /* onPress={()=> navigation.navigate('Search')} */
+                    onPress={()=> navigation.navigate('Search')}
                 />
             ),
             headerLeft: () => (
@@ -32,9 +35,9 @@ const GiveNTake = ({navigation}: Props) => {
         });
         }, []);
     return(
-        <Body>
-            GiveNTake
-        </Body>
+        <Container>
+            <Explain>GiveNTake</Explain>
+        </Container>
     );
 };
 
