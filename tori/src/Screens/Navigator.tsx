@@ -10,6 +10,7 @@ import GiveNTake from '~/Screens/GiveNTake';
 import CustomDrawer from '~/Screens/Drawer';
 import Search from '~/Screens/Search';
 import SearchBar from '~/Components/SearchBar';
+import Detail from '~/Screens/Detail';
 
 const BottomTab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -23,7 +24,13 @@ const HomeTab = () => {
                 component={Home}
                 options={{title: 'TORI APP'}}
             />
+            <Stack.Screen
+                name="Detail"
+                component={Detail}
+                options={{title: 'Detail'}}
+            />
         </Stack.Navigator>
+        
     )
 }
 
@@ -41,6 +48,11 @@ const GiveNTakeTab = () => {
                 options={{
                     headerTitle:() => <SearchBar />,
                 }}
+            />
+            <Stack.Screen
+                name="Detail"
+                component={Detail}
+                options={{title: 'Detail'}}
             />
         </Stack.Navigator>
     )
