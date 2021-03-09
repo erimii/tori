@@ -4,7 +4,6 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {DrawerActions} from '@react-navigation/native';
 
 import IconButton from '~/Components/IconButton';
-import Brand from './Brand';
 
 const Container = Styled.SafeAreaView`
 `;
@@ -13,20 +12,14 @@ const Explain = Styled.Text`
     font-size:50px;
 `;
 
-type NavigationProp = StackNavigationProp <GiveNTakeNaviParamList, 'GiveNTake'>;
+type NavigationProp = StackNavigationProp <GoodsShopNaviParamList, 'GoodsShop'>;
 interface Props{
     navigation: NavigationProp;
 }
 
-const GiveNTake = ({navigation}: Props) => {
+const GoodsShop = ({navigation}: Props) => {
     useLayoutEffect(() => {
         navigation.setOptions({
-            headerRight: () => (
-                <IconButton
-                    iconName="search"
-                    onPress={()=> navigation.navigate('Search')}
-                />
-            ),
             headerLeft: () => (
                 <IconButton
                     iconName="menu"
@@ -37,17 +30,9 @@ const GiveNTake = ({navigation}: Props) => {
         }, []);
     return(
         <Container>
-            <Explain>GiveNTake</Explain>
-            <Brand
-                title="Brand"
-                onPress={(id: number) => {
-                    navigation.navigate('BrandDetail', {
-                        id,
-                    });
-                }}
-            />
+            <Explain>GoodsShop</Explain>
         </Container>
     );
 };
 
-export default GiveNTake;
+export default GoodsShop;

@@ -3,12 +3,11 @@ import Styled from 'styled-components/native';
 import {RouteProp} from '@react-navigation/native';
 import axios from 'axios';
 
-import BigCatalog from '~/Screens/Detail/BigCatalog';
+import CastList from './CastList';
 import Loading from '~/Components/Loading';
 
 const Container = Styled.ScrollView`
     margin-top:8px;
-    background:pink;
 `;
 
 const LabelTitle = Styled.Text`
@@ -67,13 +66,7 @@ const Detail = ({route}: Props) => {
 
     return data ? (
         <Container>
-          <BigCatalog
-            id={data.id}
-            image={data.large_cover_image}
-            year={data.year}
-            title={data.title}
-            genres={data.genres}
-          />
+          {data.cast && <CastList cast={data.cast} />}
           <SubInfoContainer>
             <LabelTitle>{data.title}</LabelTitle>
             <InfoContainer>

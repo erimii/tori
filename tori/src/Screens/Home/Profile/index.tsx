@@ -1,17 +1,16 @@
 import React from 'react';
 import Styled from 'styled-components/native';
-import {Image} from 'react-native';
 import Button from '~/Components/Button';
 
 const Container = Styled.View`
-  flex-direction: row;
-  background:#ffffff;
+  background:#8cd5ff;
   width:95%;
   border-radius:5px;
   margin:5px 9px;
+  padding:5px 9px;
 `;
 const ProfileImageContainer = Styled.View`
-  padding: 16px;
+  background:red;
 `;
 const ProfileImage = Styled.Image`
   border-radius: 100px;
@@ -19,15 +18,25 @@ const ProfileImage = Styled.Image`
 const ProfileContent = Styled.View`
   flex: 1;
   padding: 16px;
-  justify-content: space-around;
+  flex-direction: row;
+  background:blue;
+  flex-wrap: wrap;
+  display: flex;
 `;
 const LabelContainer = Styled.View`
-  flex-direction: row;
+  background:#ff6bc1;
+  margin-left:10px;
+  margin-right:auto;
+`;
+
+const LabelContainer2 = Styled.View`
+  margin-left:10px;
 `;
 
 const ProfileItem = Styled.View`
-  flex: 1;
   align-items: center;
+  flex-direction: row;
+  background:#7cf05f;
 `;
 const LabelCount = Styled.Text`
   font-size: 16px;
@@ -37,48 +46,62 @@ const LabelTitle = Styled.Text`
   font-weight: 300;
 `;
 
+const GivContainer = Styled.View`
+  justify-content: space-between;
+  flex-direction: row;
+  background:#dfff89;
+`;
+
 interface Props {
-    posts:number;
-    follower:number;
-    following:number;
+    grade:string;
+    nickname:string;
+    giv:number;
+    mydonation?:number
 }
 
-const Profile = ({posts, follower,following} : Props) => {
+const Profile = ({grade, nickname,giv, mydonation} : Props) => {
     return(
         <Container>
+          <ProfileContent>
             <ProfileImageContainer>
-                <ProfileImage 
-                    source= {require('~/Images/tori3000.png')} 
-                    style={{width: 100, height: 100}} 
-                />
+              <ProfileImage 
+                source= {require('~/Images/tori3000.png')} 
+                style={{width: 80, height: 80}} 
+              />
             </ProfileImageContainer>
-            <ProfileContent>
-                <LabelContainer>
-                <ProfileItem>
-                    <LabelCount>{posts}</LabelCount>
-                    <LabelTitle>게시물</LabelTitle>
-                </ProfileItem>
-                <ProfileItem>
-                    <LabelCount>{follower}</LabelCount>
-                    <LabelTitle>팔로워</LabelTitle>
-                </ProfileItem>
-                <ProfileItem>
-                    <LabelCount>{following}</LabelCount>
-                    <LabelTitle>팔로잉</LabelTitle>
-                </ProfileItem>
-                </LabelContainer>
+            <LabelContainer>
+              <ProfileItem>
+                <LabelCount>{grade}</LabelCount>
+              </ProfileItem>
+              <ProfileItem>
+                <LabelCount>{nickname}</LabelCount>
+              </ProfileItem>
+            </LabelContainer>
+            <Button
+              label="설정"
+              style={{
+                backgroundColor:'#FFFFFF',
+              }}
+              color="black"
+            /> 
+          </ProfileContent>
+          <LabelContainer2>
+            <GivContainer>
+              <LabelTitle>내가 낸 티끌</LabelTitle>
+              <LabelCount>{mydonation}원</LabelCount>
+            </GivContainer>
+            <GivContainer>
+              <LabelCount>{giv} 기브</LabelCount>
                 <Button
-                label="프로필 수정"
-                style={{
-                    borderRadius: 4,
+                  label="충전하기 >"
+                  style={{
                     backgroundColor: '#FEFFFF',
-                    borderWidth: 1,
-                    borderColor: '#D3D3D3',
-                    height: 32,
-                }}
-                color="#292929"
-                />
-            </ProfileContent>
+                    height: 22,
+                  }}
+                  color="#292929"
+                />    
+            </GivContainer>
+          </LabelContainer2>
     </Container>
     )
 }

@@ -11,13 +11,10 @@ const CatalogImage = Styled.Image`
 interface Props {
   id: number;
   image: string;
-  year: number;
-  title: string;
-  genres: Array<string>;
   onPress?: (id: number) => void;
 }
 
-const BigCatalog = ({id, image, year, title, genres, onPress}: Props) => {
+const BigCatalog = ({id, image, onPress}: Props) => {
   return (
     <Container
       activeOpacity={1}

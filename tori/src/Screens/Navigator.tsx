@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createStackNavigator} from '@react-navigation/stack';
 
@@ -11,6 +11,10 @@ import CustomDrawer from '~/Screens/Drawer';
 import Search from '~/Screens/Search';
 import SearchBar from '~/Components/SearchBar';
 import Detail from '~/Screens/Detail';
+import PilotProject from '~/Screens/PilotProject';
+import GoodsShop from '~/Screens/GoodsShop';
+import MyPage from '~/Screens/MyPage';
+import BrandDetail from '~/Screens/BrandDetail';
 
 const BottomTab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -22,7 +26,7 @@ const HomeTab = () => {
             <Stack.Screen
                 name="Home"
                 component={Home}
-                options={{title: 'TORI APP'}}
+                options={{title: 'Home'}}
             />
             <Stack.Screen
                 name="Detail"
@@ -40,7 +44,7 @@ const GiveNTakeTab = () => {
             <Stack.Screen
                 name="GiveNTakeTab"
                 component={GiveNTake}
-                options={{title: 'GiveNTake'}}
+                options={{title: '기부앤테이크'}}
             />
             <Stack.Screen
                 name="Search"
@@ -54,14 +58,58 @@ const GiveNTakeTab = () => {
                 component={Detail}
                 options={{title: 'Detail'}}
             />
+            <Stack.Screen
+                name="BrandDetail"
+                component={BrandDetail}
+                options={{title: 'BrandDetail'}}
+            />
         </Stack.Navigator>
     )
 }
 
-const MainTabs = () =>{
+const PilotProjectTab = () => {
+    return(
+        <Stack.Navigator>
+            <Stack.Screen
+                name="PilotProject"
+                component={PilotProject}
+                options={{title: 'PilotProject'}}
+            />
+        </Stack.Navigator>
+        
+    )
+}
+
+const GoodsShopTab = () => {
+    return(
+        <Stack.Navigator>
+            <Stack.Screen
+                name="GoodsShop"
+                component={GoodsShop}
+                options={{title: 'GoodsShop'}}
+            />
+        </Stack.Navigator>
+        
+    )
+}
+
+const MyPageTab = () => {
+    return(
+        <Stack.Navigator>
+            <Stack.Screen
+                name="MyPage"
+                component={MyPage}
+                options={{title: 'MyPage'}}
+            />
+        </Stack.Navigator>
+        
+    )
+}
+
+const MainBottomTabs = () =>{
     return(
         <BottomTab.Navigator
-            tabBarOptions={{showLabel:false}}> 
+            /* tabBarOptions={{showLabel:false}} */> 
             <BottomTab.Screen
                 name="Home"
                 component={HomeTab}
@@ -92,6 +140,51 @@ const MainTabs = () =>{
                     )
                 }}
             />
+            <BottomTab.Screen
+                name="PilotProject"
+                component={PilotProjectTab}
+                options={{
+                    tabBarIcon: ({color, focused}) => (
+                        <Image
+                            source={
+                                focused
+                                ? require('~/Images/tabs/ic_profile.png')
+                                : require('~/Images/tabs/ic_profile_outline.png')
+                            }
+                        />
+                    )
+                }}
+            />
+            <BottomTab.Screen
+                name="GoodsShop"
+                component={GoodsShopTab}
+                options={{
+                    tabBarIcon: ({color, focused}) => (
+                        <Image
+                            source={
+                                focused
+                                ? require('~/Images/tabs/ic_profile.png')
+                                : require('~/Images/tabs/ic_profile_outline.png')
+                            }
+                        />
+                    )
+                }}
+            />
+            <BottomTab.Screen
+                name="MyPage"
+                component={MyPageTab}
+                options={{
+                    tabBarIcon: ({color, focused}) => (
+                        <Image
+                            source={
+                                focused
+                                ? require('~/Images/tabs/ic_profile.png')
+                                : require('~/Images/tabs/ic_profile_outline.png')
+                            }
+                        />
+                    )
+                }}
+            />
         </BottomTab.Navigator>
     )
 }
@@ -101,8 +194,8 @@ const MainNavigator = () => {
         <Drawer.Navigator
             drawerPosition="left"
             drawerContent={(props) => <CustomDrawer props={props} />}>
-                <Drawer.Screen name="MainTabs" component={MainTabs} />
-            </Drawer.Navigator>
+                <Drawer.Screen name="MainTabs" component={MainBottomTabs} />
+        </Drawer.Navigator>
     )
 }
 

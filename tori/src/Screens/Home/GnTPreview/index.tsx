@@ -2,20 +2,27 @@ import React, {useState, useEffect} from 'react';
 import {FlatList} from 'react-native';
 import Styled from 'styled-components/native';
 import axios from "axios";
+import Button from '~/Components/Button';
+import { useNavigation } from "@react-navigation/native";
 
 const Container = Styled.View`
     margin:5px 9px;
-    background:#ffffff;
+    background:#b1d1fa;
     border-radius:5px;
 `;
 
-const InfoContainer = Styled.View``;
+const InfoContainer = Styled.View`
+    background:purple;
+    flex-direction: row;
+    justify-content: space-between;
+`;
 
 const Title = Styled.Text`
     font-size: 16px;
     font-weight:bold;
     margin: 3px 1px;
 `;
+
 
 const CatalogContainer = Styled.View`
     height: 201px;
@@ -33,8 +40,10 @@ interface Props {
     onPress: (id: number) => void;
 }
 
-const LatestOrder = ({title, onPress}: Props) => {
+const GnTPreview = ({title, onPress}: Props) => {
     const [dataList, setDataList] = useState<Array<IMovie>>([]);
+
+    const navigation = useNavigation();
 
     useEffect(()=> {
         const fetchData = async () => {
@@ -49,6 +58,14 @@ const LatestOrder = ({title, onPress}: Props) => {
         <Container>
             <InfoContainer>
                 <Title>{title}</Title>
+                <Button
+                    label="더보기 >"
+                    style={{
+                        backgroundColor: '#FEFFFF',
+                        height: 32,
+                    }}
+                    color="#292929"
+                    onPress={()=> {navigation.navigate('GiveNTake')} } />
             </InfoContainer>
             <CatalogContainer>
                 <FlatList
@@ -75,4 +92,4 @@ const LatestOrder = ({title, onPress}: Props) => {
     );
 };
 
-export default LatestOrder;
+export default GnTPreview;
