@@ -47,10 +47,9 @@ const GnTPreview = ({title, onPress}: Props) => {
 
     useEffect(()=> {
         const fetchData = async () => {
-            const result = await axios.get(`https://yts.mx/api/v2/list_movies.json?&sort_by=add_date&order_by=asc&limit=10`);
+            const result = await axios.get(`https://yts.mx/api/v2/list_movies.json?&sort_by=date_added&order_by=asc&limit=10`);
             setDataList(result.data.data.movies)
         }
-        
         fetchData()
     }, [])
     
@@ -82,7 +81,7 @@ const GnTPreview = ({title, onPress}: Props) => {
                             }}>
                             <CatalogImage
                                 source={{uri: (item as IMovie).large_cover_image}}
-                                style={{width:180, height:180 }}
+                                style={{width:150, height:150 }}
                             />
                         </CatalogImageContainer>
                     )}

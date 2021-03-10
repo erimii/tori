@@ -8,13 +8,13 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Home from '~/Screens/Home';
 import GiveNTake from '~/Screens/GiveNTake';
 import CustomDrawer from '~/Screens/Drawer';
-import Search from '~/Screens/Search';
-import SearchBar from '~/Components/SearchBar';
+import Notice from '~/Screens/Notice';
 import Detail from '~/Screens/Detail';
 import PilotProject from '~/Screens/PilotProject';
 import GoodsShop from '~/Screens/GoodsShop';
 import MyPage from '~/Screens/MyPage';
 import BrandDetail from '~/Screens/BrandDetail';
+import Button from '~/Components/Button';
 
 const BottomTab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -29,12 +29,16 @@ const HomeTab = () => {
                 options={{title: 'Home'}}
             />
             <Stack.Screen
+                name="Notice"
+                component={Notice}
+                options={{title: '알림'}}
+            />
+            <Stack.Screen
                 name="Detail"
                 component={Detail}
                 options={{title: 'Detail'}}
             />
         </Stack.Navigator>
-        
     )
 }
 
@@ -47,11 +51,9 @@ const GiveNTakeTab = () => {
                 options={{title: '기부앤테이크'}}
             />
             <Stack.Screen
-                name="Search"
-                component={Search}
-                options={{
-                    headerTitle:() => <SearchBar />,
-                }}
+                name="Notice"
+                component={Notice}
+                options={{title: '알림'}}
             />
             <Stack.Screen
                 name="Detail"
@@ -100,6 +102,11 @@ const MyPageTab = () => {
                 name="MyPage"
                 component={MyPage}
                 options={{title: 'MyPage'}}
+            />
+            <Stack.Screen
+                name="Notice"
+                component={Notice}
+                options={{title: '알림'}}
             />
         </Stack.Navigator>
         

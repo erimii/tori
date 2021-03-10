@@ -2,12 +2,10 @@ import React, {useState, useEffect} from 'react';
 import {FlatList} from 'react-native';
 import Styled from 'styled-components/native';
 import axios from "axios";
-import Button from '~/Components/Button';
-import { useNavigation } from "@react-navigation/native";
 
 const Container = Styled.View`
     margin:5px 9px;
-    background:#ffffff;
+    background:#ceb8ff;
     border-radius:5px;
 `;
 
@@ -39,12 +37,12 @@ interface Props {
     onPress: (id: number) => void;
 }
 
-const Brand = ({title, onPress}: Props) => {
+const BrandList = ({title, onPress}: Props) => {
     const [dataList, setDataList] = useState<Array<IMovie>>([]);
 
     useEffect(()=> {
         const fetchData = async () => {
-            const result = await axios.get(`https://yts.mx/api/v2/list_movies.json?&sort_by=add_date&order_by=asc&limit=10`);
+            const result = await axios.get(`https://yts.mx/api/v2/list_movies.json?&sort_by=title&order_by=dec&limit=10`);
             setDataList(result.data.data.movies)
         }
         
@@ -71,7 +69,7 @@ const Brand = ({title, onPress}: Props) => {
                             }}>
                             <CatalogImage
                                 source={{uri: (item as IMovie).large_cover_image}}
-                                style={{width:230, height:150 }}
+                                style={{width:230, height:170 }}
                             />
                         </CatalogImageContainer>
                     )}
@@ -81,4 +79,4 @@ const Brand = ({title, onPress}: Props) => {
     );
 };
 
-export default Brand;
+export default BrandList;

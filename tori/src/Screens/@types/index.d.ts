@@ -1,5 +1,6 @@
 type HomeTabParamList = {
     Home: undefined;
+    Notice: undefined;
     Detail: {
         id: number;
     };
@@ -7,7 +8,7 @@ type HomeTabParamList = {
 
 type GiveNTakeNaviParamList = {
     GiveNTake: undefined;
-    Search: undefined;
+    Notice: undefined;
     Detail: {
         id: number;
     };
@@ -26,4 +27,5 @@ type GoodsShopNaviParamList = {
 
 type MyPageNaviParamList = {
     MyPage: undefined;
+    Notice: undefined;
 }

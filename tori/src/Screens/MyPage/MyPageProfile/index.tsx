@@ -4,10 +4,11 @@ import Button from '~/Components/Button';
 
 const Container = Styled.View`
   background:#8cd5ff;
-  width:95%;
+  flex:1;
   border-radius:5px;
   margin:5px 9px;
   padding:5px 9px;
+  flex-direction: row;
 `;
 const ProfileImageContainer = Styled.View`
   background:red;
@@ -16,26 +17,19 @@ const ProfileImage = Styled.Image`
   border-radius: 100px;
 `;
 const ProfileContent = Styled.View`
-  flex: 1;
-  padding: 16px;
-  flex-direction: row;
+  flex-direction: column;
   background:blue;
-  flex-wrap: wrap;
-  display: flex;
+  padding: 5px;
+  flex:1;
 `;
 const LabelContainer = Styled.View`
   background:#ff6bc1;
-  margin-left:10px;
-  margin-right:auto;
-`;
-
-const LabelContainer2 = Styled.View`
-  margin-left:10px;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 const ProfileItem = Styled.View`
   align-items: center;
-  flex-direction: row;
   background:#7cf05f;
 `;
 const LabelCount = Styled.Text`
@@ -56,40 +50,33 @@ interface Props {
     grade:string;
     nickname:string;
     giv?:number;
-    mydonation?:number
 }
 
-const Profile = ({grade, nickname,giv, mydonation} : Props) => {
+const Profile = ({grade, nickname,giv} : Props) => {
     return(
         <Container>
-          <ProfileContent>
             <ProfileImageContainer>
               <ProfileImage 
                 source= {require('~/Images/tori3000.png')} 
                 style={{width: 80, height: 80}} 
               />
             </ProfileImageContainer>
+            <ProfileContent>
             <LabelContainer>
               <ProfileItem>
                 <LabelCount>{grade}</LabelCount>
-              </ProfileItem>
-              <ProfileItem>
                 <LabelCount>{nickname}</LabelCount>
               </ProfileItem>
-            </LabelContainer>
-            <Button
-              label="설정"
+              <Button
+              label="계정 관리"
               style={{
                 backgroundColor:'#FFFFFF',
+                alignSelf:'flex-start',
+                marginLeft:'auto',
               }}
               color="black"
-            /> 
-          </ProfileContent>
-          <LabelContainer2>
-            <GivContainer>
-              <LabelTitle>내가 낸 티끌</LabelTitle>
-              <LabelCount>{mydonation}원</LabelCount>
-            </GivContainer>
+            />
+            </LabelContainer>
             <GivContainer>
               <LabelCount>{giv} 기브</LabelCount>
                 <Button
@@ -101,8 +88,8 @@ const Profile = ({grade, nickname,giv, mydonation} : Props) => {
                   color="#292929"
                 />    
             </GivContainer>
-          </LabelContainer2>
-    </Container>
+         </ProfileContent>
+        </Container>
     )
 }
 

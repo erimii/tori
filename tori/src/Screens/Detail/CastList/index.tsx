@@ -1,4 +1,4 @@
-import { DrawerItem } from '@react-navigation/drawer';
+// 이미지 부분
 import React from 'react';
 import { Dimensions, FlatList } from 'react-native';
 import Styled from 'styled-components/native';

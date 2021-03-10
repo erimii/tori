@@ -4,13 +4,11 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {DrawerActions} from '@react-navigation/native';
 
 import IconButton from '~/Components/IconButton';
-import Brand from './Brand';
+import BrandList from './BrandList';
+import ProductList from './ProductList';
 
-const Container = Styled.SafeAreaView`
-`;
-
-const Explain = Styled.Text`
-    font-size:50px;
+const Container = Styled.ScrollView`
+    
 `;
 
 type NavigationProp = StackNavigationProp <GiveNTakeNaviParamList, 'GiveNTake'>;
@@ -23,8 +21,8 @@ const GiveNTake = ({navigation}: Props) => {
         navigation.setOptions({
             headerRight: () => (
                 <IconButton
-                    iconName="search"
-                    onPress={()=> navigation.navigate('Search')}
+                    iconName="notice"
+                    onPress={()=> navigation.navigate('Notice')}
                 />
             ),
             headerLeft: () => (
@@ -37,11 +35,18 @@ const GiveNTake = ({navigation}: Props) => {
         }, []);
     return(
         <Container>
-            <Explain>GiveNTake</Explain>
-            <Brand
-                title="Brand"
+            <BrandList
+                title="BrandList"
                 onPress={(id: number) => {
                     navigation.navigate('BrandDetail', {
+                        id,
+                    });
+                }}
+            />
+            <ProductList
+                title="ProductList"
+                onPress={(id: number) => {
+                    navigation.navigate('Detail', {
                         id,
                     });
                 }}
