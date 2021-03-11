@@ -10,7 +10,6 @@ import GiveNTake from '~/Screens/GiveNTake';
 import CustomDrawer from '~/Screens/Drawer';
 import Notice from '~/Screens/Notice';
 import Detail from '~/Screens/Detail';
-import PilotProject from '~/Screens/PilotProject';
 import GoodsShop from '~/Screens/GoodsShop';
 import MyPage from '~/Screens/MyPage';
 import BrandDetail from '~/Screens/BrandDetail';
@@ -66,19 +65,6 @@ const GiveNTakeTab = () => {
                 options={{title: 'BrandDetail'}}
             />
         </Stack.Navigator>
-    )
-}
-
-const PilotProjectTab = () => {
-    return(
-        <Stack.Navigator>
-            <Stack.Screen
-                name="PilotProject"
-                component={PilotProject}
-                options={{title: 'PilotProject'}}
-            />
-        </Stack.Navigator>
-        
     )
 }
 
@@ -148,21 +134,6 @@ const MainBottomTabs = () =>{
                 }}
             />
             <BottomTab.Screen
-                name="PilotProject"
-                component={PilotProjectTab}
-                options={{
-                    tabBarIcon: ({color, focused}) => (
-                        <Image
-                            source={
-                                focused
-                                ? require('~/Images/tabs/ic_profile.png')
-                                : require('~/Images/tabs/ic_profile_outline.png')
-                            }
-                        />
-                    )
-                }}
-            />
-            <BottomTab.Screen
                 name="GoodsShop"
                 component={GoodsShopTab}
                 options={{
@@ -196,7 +167,7 @@ const MainBottomTabs = () =>{
     )
 }
 
-const MainNavigator = () => {
+/* const MainNavigator = () => {
     return(
         <Drawer.Navigator
             drawerPosition="left"
@@ -204,12 +175,12 @@ const MainNavigator = () => {
                 <Drawer.Screen name="MainTabs" component={MainBottomTabs} />
         </Drawer.Navigator>
     )
-}
+} */
 
 export default () => {
     return(
         <NavigationContainer>
-            <MainNavigator />
+            <MainBottomTabs />
         </NavigationContainer>
     )
 }

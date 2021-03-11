@@ -25,12 +25,6 @@ const GiveNTake = ({navigation}: Props) => {
                     onPress={()=> navigation.navigate('Notice')}
                 />
             ),
-            headerLeft: () => (
-                <IconButton
-                    iconName="menu"
-                    onPress={()=> navigation.dispatch(DrawerActions.openDrawer())}
-                />
-            ),
         });
         }, []);
     return(
