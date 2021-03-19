@@ -5,7 +5,6 @@ import axios from "axios";
 
 const Container = Styled.View`
   margin:5px 9px;
-  background:#8753f5;
 `;
 
 const CatalogContainer = Styled.SafeAreaView`

@@ -1,7 +1,6 @@
 import React, {useLayoutEffect} from 'react';
 import Styled from 'styled-components/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {DrawerActions} from '@react-navigation/native';
 
 import IconButton from '~/Components/IconButton';
 
@@ -20,10 +19,10 @@ interface Props{
 const GoodsShop = ({navigation}: Props) => {
     useLayoutEffect(() => {
         navigation.setOptions({
-            headerLeft: () => (
+            headerRight: () => (
                 <IconButton
-                    iconName="menu"
-                    onPress={()=> navigation.dispatch(DrawerActions.openDrawer())}
+                    iconName="notice"
+                    onPress={()=> navigation.navigate('Notice')}
                 />
             ),
         });

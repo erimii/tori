@@ -1,33 +1,18 @@
 import React, {useLayoutEffect, useEffect} from 'react';
 import Styled from 'styled-components/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {DrawerActions} from '@react-navigation/native';
+import {Animated} from 'react-native';
 
 import IconButton from '~/Components/IconButton';
 import Profile from './Profile';
 import GnTPreview from './GnTPreview';
+import Promotion from './Promotion';
+import TotalDonation from './TotalDonation';
 
 const Container = Styled.ScrollView`
     background: #F2F2F2;
-    margin-bottom: 42px;
 `;
 
-const Explain = Styled.Text`
-    font-size:20px;
-    margin:5px 9px;
-    text-align:center;
-`;
-
-const TotalDonation = Styled.View`
-    background: #D9D9D9;
-    left: 0;
-    right: 0;
-    bottom:0;
-    height: 42px;
-    position:absolute;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-`;
 
 type NavigationProp = StackNavigationProp <HomeTabParamList, 'Home'>;
 interface Props{
@@ -35,6 +20,11 @@ interface Props{
 }
 
 const Home = ({navigation}: Props) => {
+    const scrollY = new Animated.Value(0)
+    const translateY = scrollY.interpolate({
+        inputRange:[0,50],
+        outputRange:[0,30]
+    })
     useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => (
@@ -48,13 +38,18 @@ const Home = ({navigation}: Props) => {
 
     return(
         <>
-            <Container>
+            <Container
+            onScroll={(e)=>{
+                scrollY.setValue(e.nativeEvent.contentOffset.y)
+                console.log(scrollY)
+            }}>
                 <Profile
                     grade={'뉴비 기부니'}
                     nickname={'닉네임닉네임'}
                     giv={40}
                     mydonation={30000}
                 />
+                <Promotion />
                 <GnTPreview
                     title="GnTPreview"
                     onPress={(id: number) => {
@@ -63,18 +58,16 @@ const Home = ({navigation}: Props) => {
                         });
                     }}
                 />
-                <GnTPreview
-                    title="GnTPreview2"
-                    onPress={(id: number) => {
-                        navigation.navigate('Detail', {
-                            id,
-                        });
-                    }}
-                />
             </Container>
-            <TotalDonation>
-                <Explain>총 기부금</Explain>
-            </TotalDonation>
+            <Animated.View
+                style={{
+                    transform:[
+                        {translateY:translateY}
+                    ]
+                }}>
+                <TotalDonation />
+            </Animated.View>
+            
         </>
     );
 };

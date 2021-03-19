@@ -4,13 +4,11 @@ import {RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 
 import Button from '~/Components/Button';
+import NotificationList from './NotificationList';
 
 const Container = Styled.View`
-    margin-top:8px;
-`;
-
-const Explain = Styled.Text`
-    font-size:50px;
+    margin:10px;
+    border-radius:12px;
 `;
 
 type NoticeRouteProp = RouteProp <GiveNTakeNaviParamList, 'Notice'>;
@@ -43,7 +41,10 @@ const Notice = ({route, navigation}: Props) => {
         }, []);
     return(
         <Container>
-            <Explain>Notice</Explain>
+            <NotificationList
+                onPress={(id:number) => {
+                    navigation.navigate('Detail',{id})
+                }} />
         </Container>
     );
 };

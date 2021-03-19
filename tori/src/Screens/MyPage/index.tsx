@@ -1,7 +1,6 @@
 import React, {useLayoutEffect} from 'react';
 import Styled from 'styled-components/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {DrawerActions} from '@react-navigation/native';
 
 import IconButton from '~/Components/IconButton';
 import MyPageProfile from './MyPageProfile';
@@ -13,7 +12,6 @@ const MyPageBodyContainer = Styled.View`
     padding: 8px 16px;
 `;
 const RowContainer = Styled.View`
-    background: skyblue;
 `;
 const ColumnConstainer = Styled.View``;
 
@@ -28,7 +26,6 @@ const Title = Styled.Text`
 const IconContainer = Styled.TouchableOpacity`
   flex-direction: column;
   align-items: center;
-  background: red;
 `;
 const Icon = Styled.Image`
 `;
@@ -36,7 +33,6 @@ const Label = Styled.Text`
     font-size: 12px;
 `;
 const Button = Styled.TouchableOpacity`
-    background: red;
     margin-top:10px;
 `;
 
@@ -86,43 +82,22 @@ const MyPage = ({navigation}: Props) => {
                         </IconContainer>
                     </IconButtonContainer>
                 </RowContainer>
-                <Title>굿즈샵</Title>
-                <RowContainer>
-                    <IconButtonContainer>
-                        <IconContainer>
-                            <Icon source={require('~/Images/ic_search.png')} />
-                            <Label>기부 내역</Label>
-                        </IconContainer>
-                        <IconContainer>
-                            <Icon source={require('~/Images/ic_search.png')} />
-                            <Label>기부 내역</Label>
-                        </IconContainer>
-                        <IconContainer>
-                            <Icon source={require('~/Images/ic_search.png')} />
-                            <Label>기부 내역</Label>
-                        </IconContainer>
-                        <IconContainer>
-                            <Icon source={require('~/Images/ic_search.png')} />
-                            <Label>기부 내역</Label>
-                        </IconContainer>
-                    </IconButtonContainer>
-                </RowContainer>
+
                 <Title>고객센터</Title>
                 <ColumnConstainer>
                     <Button onPress={() =>{}}>
                         <Label>공지사항</Label>
                     </Button>
-                    <Button onPress={() =>{}}>
+                    <Button onPress={() =>{
+                        navigation.navigate('Question')
+                    }}>
                         <Label>문의/건의</Label>
                     </Button>
                 </ColumnConstainer>
                 <Title>설정</Title>
                 <ColumnConstainer>
                     <Button onPress={() =>{}}>
-                        <Label>공지사항</Label>
-                    </Button>
-                    <Button onPress={() =>{}}>
-                        <Label>문의/건의</Label>
+                        <Label>앱 설정</Label>
                     </Button>
                 </ColumnConstainer>
             </MyPageBodyContainer>

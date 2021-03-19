@@ -6,15 +6,18 @@ import Button from '~/Components/Button';
 import { useNavigation } from "@react-navigation/native";
 
 const Container = Styled.View`
-    margin:5px 9px;
-    background:#b1d1fa;
+    margin:9px 9px;
     border-radius:5px;
 `;
 
 const InfoContainer = Styled.View`
-    background:purple;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom:6px;
+`;
+
+const LabelContainer = Styled.View`
+
 `;
 
 const Title = Styled.Text`
@@ -26,6 +29,7 @@ const Title = Styled.Text`
 
 const CatalogContainer = Styled.View`
     height: 201px;
+    background: white;
 `;
 
 const CatalogImageContainer = Styled.TouchableOpacity`
@@ -60,13 +64,41 @@ const GnTPreview = ({title, onPress}: Props) => {
                 <Button
                     label="더보기 >"
                     style={{
-                        backgroundColor: '#FEFFFF',
-                        height: 32,
+                        backgroundColor: '#F2f2f2',
+                        height: 31,
                     }}
-                    color="#292929"
+                    color="#aaa3a3"
                     onPress={()=> {navigation.navigate('GiveNTake')} } />
             </InfoContainer>
             <CatalogContainer>
+                <LabelContainer>
+                    <Title>마감 임박</Title>
+                </LabelContainer>
+                <FlatList
+                    horizontal={true}
+                    data={dataList}
+                    keyExtractor={(item, index) => {
+                        return `List-${(item as IMovie).id}-${index}`;
+                    }}
+                    renderItem={({item, index}) => (
+                        <CatalogImageContainer
+                            activeOpacity={1}
+                            onPress={() => {
+                                onPress((item as IMovie).id);
+                            }}>
+                            <CatalogImage
+                                source={{uri: (item as IMovie).large_cover_image}}
+                                style={{width:150, height:150 }}
+                            />
+                        </CatalogImageContainer>
+                    )}
+                />
+            </CatalogContainer>
+            
+            <CatalogContainer>
+                <LabelContainer>
+                    <Title>최신순</Title>
+                </LabelContainer>
                 <FlatList
                     horizontal={true}
                     data={dataList}

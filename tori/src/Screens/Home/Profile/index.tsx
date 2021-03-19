@@ -3,14 +3,13 @@ import Styled from 'styled-components/native';
 import Button from '~/Components/Button';
 
 const Container = Styled.View`
-  background:#8cd5ff;
-  width:95%;
-  border-radius:5px;
-  margin:5px 9px;
+  width:93%;
+  margin:13px 13px;
   padding:5px 9px;
+  background: #FFFFFF;
+border-radius: 5px;
 `;
 const ProfileImageContainer = Styled.View`
-  background:red;
 `;
 const ProfileImage = Styled.Image`
   border-radius: 100px;
@@ -19,12 +18,10 @@ const ProfileContent = Styled.View`
   flex: 1;
   padding: 16px;
   flex-direction: row;
-  background:blue;
   flex-wrap: wrap;
   display: flex;
 `;
 const LabelContainer = Styled.View`
-  background:#ff6bc1;
   margin-left:10px;
   margin-right:auto;
 `;
@@ -36,7 +33,6 @@ const LabelContainer2 = Styled.View`
 const ProfileItem = Styled.View`
   align-items: center;
   flex-direction: row;
-  background:#7cf05f;
 `;
 const LabelCount = Styled.Text`
   font-size: 16px;
@@ -49,7 +45,6 @@ const LabelTitle = Styled.Text`
 const GivContainer = Styled.View`
   justify-content: space-between;
   flex-direction: row;
-  background:#dfff89;
 `;
 
 interface Props {

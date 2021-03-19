@@ -4,8 +4,7 @@ import Styled from 'styled-components/native';
 import axios from "axios";
 
 const Container = Styled.View`
-    margin:5px 9px;
-    background:#ceb8ff;
+    margin:10px 9px;
     border-radius:5px;
 `;
 
@@ -42,7 +41,7 @@ const BrandList = ({title, onPress}: Props) => {
 
     useEffect(()=> {
         const fetchData = async () => {
-            const result = await axios.get(`https://yts.mx/api/v2/list_movies.json?&sort_by=title&order_by=dec&limit=10`);
+            const result = await axios.get(`https://yts.mx/api/v2/list_movies.json?&sort_by=title&order_by=dec&limit=3`);
             setDataList(result.data.data.movies)
         }
         

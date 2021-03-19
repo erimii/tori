@@ -7,9 +7,11 @@ const StyleButton = Styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   background-color: #3796EF;
+  font-weight: bold;
 `;
 const Label = Styled.Text`
   color: #FFFFFF;
+  font-weight: bold;
 `;
 
 interface Props {

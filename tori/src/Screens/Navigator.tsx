@@ -2,22 +2,21 @@ import React from 'react';
 import { Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import {createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import Home from '~/Screens/Home';
 import GiveNTake from '~/Screens/GiveNTake';
-import CustomDrawer from '~/Screens/Drawer';
 import Notice from '~/Screens/Notice';
 import Detail from '~/Screens/Detail';
 import GoodsShop from '~/Screens/GoodsShop';
 import MyPage from '~/Screens/MyPage';
 import BrandDetail from '~/Screens/BrandDetail';
-import Button from '~/Components/Button';
+import Question from '~/Screens/Question';
+
 
 const BottomTab = createBottomTabNavigator();
-const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
+
 
 const HomeTab = () => {
     return(
@@ -94,6 +93,11 @@ const MyPageTab = () => {
                 component={Notice}
                 options={{title: '알림'}}
             />
+            <Stack.Screen
+                name="Question"
+                component={Question}
+                options={{title:'자주묻는 질문'}}
+            />
         </Stack.Navigator>
         
     )
@@ -167,20 +171,11 @@ const MainBottomTabs = () =>{
     )
 }
 
-/* const MainNavigator = () => {
-    return(
-        <Drawer.Navigator
-            drawerPosition="left"
-            drawerContent={(props) => <CustomDrawer props={props} />}>
-                <Drawer.Screen name="MainTabs" component={MainBottomTabs} />
-        </Drawer.Navigator>
-    )
-} */
 
 export default () => {
     return(
         <NavigationContainer>
-            <MainBottomTabs />
+            <MainBottomTabs/>
         </NavigationContainer>
     )
 }

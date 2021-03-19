@@ -4,19 +4,19 @@ import Styled from 'styled-components/native';
 
 const Container = Styled.TouchableOpacity`
   flex: 1;
-  border-bottom-width: 1px;
-  border-color: #929292;
-  padding-bottom: 8px;
+  border-bottom-width: 2px;
   align-items: center;
   justify-content: center;
+  width: 80%
 `;
 const Label = Styled.Text`
   font-size: 16px;
-  color: #929292;
+  color: #797979;
+  font-weight: bold;
   text-align: center;
 `;
 const TabImage = Styled.Image`
-  margin-top: 8px;
+  margin-top: 9px;
 `;
 
 interface Props {

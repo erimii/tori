@@ -2,9 +2,11 @@ import React, {useState, useEffect} from 'react';
 import Styled from 'styled-components/native';
 import {RouteProp} from '@react-navigation/native';
 import axios from 'axios';
+import Modal from "react-native-modal";
 
 import CastList from './CastList';
 import Loading from '~/Components/Loading';
+import Button from '~/Components/Button';
 
 const Container = Styled.ScrollView`
     margin-top:8px;
@@ -44,7 +46,14 @@ const InfoContainer = Styled.View`
   justify-content: flex-start;
   padding: 0 16px;
 `;
-
+const StyledModalContainer = Styled.View`
+  height: 157px;
+  flex:0.2;
+  background-color: #ffffff;
+  border-radius: 10px;
+  justify-content: space-around;
+  align-items: center;
+`;
 
 type DetailRouteProp = RouteProp <GiveNTakeNaviParamList, 'Detail'>;
 interface Props{
@@ -53,6 +62,7 @@ interface Props{
 
 const Detail = ({route}: Props) => {
     const [data, setData] = useState<IMovieDetail>();
+    const [modalVisible, setModalVisible] = useState<boolean>(false);
 
     useEffect(()=> {
         const {id} = route.params;
@@ -65,6 +75,7 @@ const Detail = ({route}: Props) => {
     }, [])
 
     return data ? (
+      <>
         <Container>
           {data.cast && <CastList cast={data.cast} />}
           <SubInfoContainer>
@@ -79,10 +90,29 @@ const Detail = ({route}: Props) => {
             <Description>{data.description_full}</Description>
           </DescriptionContainer>
         </Container>
-      ) : (
-        <Loading />
-      );
-    };
+        <Button 
+          style={{backgroundColor:'#FFC02B',}}
+          label="기부하기"
+          onPress={()=>{
+            setModalVisible(true);
+          }}
+          color="black"
+        />
+        <Modal
+        isVisible={modalVisible}
+        onBackdropPress={() => setModalVisible(false)}
+        style={{justifyContent: 'flex-end', margin: 0 , }}
+        >
+          <StyledModalContainer>
+            <LabelGenres>modal</LabelGenres>
+          </StyledModalContainer>
+        </Modal>
+        
+        </>
+        ) : (
+          <Loading />
+        );
+    }
     
 
 export default Detail;

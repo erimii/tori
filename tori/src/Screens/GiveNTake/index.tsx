@@ -1,14 +1,12 @@
 import React, {useLayoutEffect} from 'react';
 import Styled from 'styled-components/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {DrawerActions} from '@react-navigation/native';
 
 import IconButton from '~/Components/IconButton';
 import BrandList from './BrandList';
 import ProductList from './ProductList';
 
 const Container = Styled.ScrollView`
-    
 `;
 
 type NavigationProp = StackNavigationProp <GiveNTakeNaviParamList, 'GiveNTake'>;

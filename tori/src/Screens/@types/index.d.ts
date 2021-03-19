@@ -17,15 +17,13 @@ type GiveNTakeNaviParamList = {
     }
 }
 
-type PilotProjectNaviParamList = {
-    PilotProject: undefined;
-}
-
 type GoodsShopNaviParamList = {
     GoodsShop: undefined;
+    Notice: undefined;
 }
 
 type MyPageNaviParamList = {
     MyPage: undefined;
     Notice: undefined;
+    Question: undefined;
 }

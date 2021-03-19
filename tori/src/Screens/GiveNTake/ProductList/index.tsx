@@ -6,13 +6,11 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import Button from '~/Components/Button';
 
 const Container = Styled.View`
-  margin:5px 9px;
-  background:#8753f5;
+  margin:5px 10px;
 `;
 const InfoContainer = Styled.View`
     flex-direction: row;
     justify-content: space-between;
-    background:#f1949c;
 `;
 
 const Title = Styled.Text`

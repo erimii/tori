@@ -10,7 +10,7 @@ import Tab from '~/Components/Tab';
 import BrandProduct from '../Detail/BrandProduct';
 
 const Container = Styled.ScrollView`
-    margin-top:8px;
+    background:white;
 `;
 const CatalogImageContainer = Styled.View`
 `;
@@ -20,10 +20,15 @@ const CatalogImage = Styled.Image`
 
 const TabContainer = Styled.View`
     flex-direction: row;
-    height:40px;
+    height:50px;
+    width:70%;
+    justify-content: center;
+    margin-left: 60px;
 `;
 
-const BrandStoryContainer = Styled.View``;
+const BrandStoryContainer = Styled.View`
+  margin-top:15px;
+`;
 const BrandStory = Styled.Text`
   padding: 0 16px;
   color: black;
