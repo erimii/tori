@@ -7,6 +7,7 @@ import Modal from "react-native-modal";
 import CastList from './CastList';
 import Loading from '~/Components/Loading';
 import Button from '~/Components/Button';
+import Input from '~/Components/Input';
 
 const Container = Styled.ScrollView`
     margin-top:8px;
@@ -43,7 +44,7 @@ const Description = Styled.Text`
 const SubInfoContainer = Styled.View``;
 const InfoContainer = Styled.View`
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 0 16px;
 `;
 const StyledModalContainer = Styled.View`
@@ -54,7 +55,40 @@ const StyledModalContainer = Styled.View`
   justify-content: space-around;
   align-items: center;
 `;
+const SecondModalContainer = Styled.View`
+  flex-direction: column;
+  width: 100%;
+  height: 30%;
+  background-color: #ffffff;
+  border: 1px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+`;
+const ButtonContainer = Styled.View`
+  flex-direction:row;
+`;
+const SecondModalCountWrapper = Styled.View`
+  flex-direction:row;
+  align-items:center;
+  border:1px;
+`;
 
+const SecondModalMinusButton = Styled.TouchableOpacity`
+  border:1px;
+`;
+
+const SecondModalInput = Styled.View`
+    align-items:center;
+    text-align:center;
+`;
+
+const SecondModalPlusButton = Styled.TouchableOpacity`
+  border:1px;
+`;
+const InputField = Styled.TextInput`
+    color: #000000;
+`;
 type DetailRouteProp = RouteProp <GiveNTakeNaviParamList, 'Detail'>;
 interface Props{
     route: DetailRouteProp;
@@ -63,6 +97,7 @@ interface Props{
 const Detail = ({route}: Props) => {
     const [data, setData] = useState<IMovieDetail>();
     const [modalVisible, setModalVisible] = useState<boolean>(false);
+    const [secondModal,setSecondModal] = useState<boolean>(false);
 
     useEffect(()=> {
         const {id} = route.params;
@@ -72,7 +107,29 @@ const Detail = ({route}: Props) => {
         }
         
         fetchData()
+        console.log(coin)
+        console.log(typeof(coin))
     }, [])
+
+    const[coin, setCoin] = useState<number>(0)   
+    const[maxCoin, setMaxCoin] = useState<number>(100)
+    const value = coin.toString()
+       
+        const minusCoin = () => {
+            if(coin>0){
+                setCoin(coin-1);
+                if(coin>maxCoin){
+                    setCoin(maxCoin)
+                }
+            }
+            else{
+                setCoin(0);
+            }
+        }
+
+        const plusCoin  = () => {
+          setCoin(parseInt(value)+1)
+        }
 
     return data ? (
       <>
@@ -96,18 +153,92 @@ const Detail = ({route}: Props) => {
           onPress={()=>{
             setModalVisible(true);
           }}
-          color="black"
+          color="#000000"
         />
         <Modal
-        isVisible={modalVisible}
-        onBackdropPress={() => setModalVisible(false)}
-        style={{justifyContent: 'flex-end', margin: 0 , }}
+          isVisible={modalVisible}
+          onBackdropPress={() => setModalVisible(false)}
+          style={{justifyContent: 'flex-end', margin: 0 , }}
         >
           <StyledModalContainer>
-            <LabelGenres>modal</LabelGenres>
+            <InfoContainer>
+              <LabelGenres>Give 가능한 {data.year} 기브</LabelGenres>
+              <Button
+                label="충전하기 >"
+                style={{
+                  backgroundColor: '#FEFFFF',
+                  height: 22,
+                }}
+                color="#979797"
+              />
+            </InfoContainer>
+            <InfoContainer>
+              <LabelGenres>
+                최대 얼마까지 참여 가능
+              </LabelGenres>
+              <SecondModalCountWrapper>
+                <Button
+                  label="-"
+                  onPress={minusCoin}
+                  style={{width:25, backgroundColor:'#ffffff'}}
+                  color='#000000'
+                />
+                <Input
+                  keyboardType='numeric'
+                  onChangeText={coin>maxCoin ? setCoin(maxCoin) : coin =>setCoin(coin)}
+                  style={{width:70, height:40, margin:0}}
+                  placeholder='0'
+                  clearMode={false}
+                  value={value}
+                />
+                <Button
+                  label="+"
+                  onPress={plusCoin}
+                  style={{width:25, backgroundColor:'#ffffff'}}
+                  color='#000000'
+                />
+            </SecondModalCountWrapper>
+            </InfoContainer>
+            
+            <LabelGenres></LabelGenres>
+            <Button 
+              style={{backgroundColor:'#FFC02B',width:'100%', marginTop:'auto'}}
+              label="기부하기"
+              onPress={()=>{
+                setSecondModal(true);
+              }}
+              color="#000000"
+            />
           </StyledModalContainer>
+          <Modal
+            isVisible={secondModal}
+            onBackdropPress={()=> setSecondModal(false)}
+            backdropOpacity={0.5}
+          >
+            <SecondModalContainer>
+              <LabelGenres>{data.title}에 {coin}기브 기부하시겠습니까? </LabelGenres>
+              <ButtonContainer>
+                <Button
+                style={{backgroundColor:'#ffffff', borderWidth:1, borderColor:'#d9d9d9',width:142}}
+                label="아니오 ㅋㅋㅋ"
+                onPress={()=>{
+                  setSecondModal(false);
+                }}
+                color="#000000"
+                />
+                <Button
+                  style={{backgroundColor:'#FFC02B', width:142, }}
+                  label="그럼요"
+                  onPress={()=>{
+                    setSecondModal(false);
+                  }}
+                  color="#000000"
+                />
+                </ButtonContainer>
+            </SecondModalContainer>
+            
+          </Modal>
         </Modal>
-        
         </>
         ) : (
           <Loading />

@@ -1,12 +1,10 @@
 import React from 'react';
+import { Value } from 'react-native-reanimated';
 import Styled from 'styled-components/native';
 
 const Container = Styled.View`
     width: 100%;
     height:40px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 4px;
     background-color: #FAFAFA;
     border-width: 1px;
     border-color: #D3D3D3;
@@ -23,7 +21,8 @@ interface Props {
     secureTextEntry?: boolean;
     style?: Object;
     clearMode?: boolean;
-    onChangeText?: (text: string) => void;
+    onChangeText?: void | ((coin: number) => void);
+    value ?: string
 }
 
 const Input = ({
@@ -33,11 +32,13 @@ const Input = ({
     style,
     clearMode,
     onChangeText,
+    value,
 }: Props) => {
     return (
         <Container style={style}>
             <InputField
-                selectionColor="red"
+                value={value}
+                selectionColor="black"
                 secureTextEntry={secureTextEntry}
                 keyboardType={keyboardType ? keyboardType : 'default'}
                 autoCapitalize="none"
@@ -47,6 +48,7 @@ const Input = ({
                 placeholder={placeholder}
                 clearButtonMode={clearMode ? 'while-editing' : 'never'}
                 onChangeText={onChangeText}
+                textAlign='center'
             />
         </Container>
     );

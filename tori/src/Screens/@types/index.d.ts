@@ -1,3 +1,5 @@
+
+
 type HomeTabParamList = {
     Home: undefined;
     Notice: undefined;
@@ -26,4 +28,10 @@ type MyPageNaviParamList = {
     MyPage: undefined;
     Notice: undefined;
     Question: undefined;
+}
+
+type DetailNaviParamList = {
+    Detail: {
+        id:number;
+    }
 }

@@ -12,6 +12,7 @@ const StyleButton = Styled.TouchableOpacity`
 const Label = Styled.Text`
   color: #FFFFFF;
   font-weight: bold;
+  font-size:16px;
 `;
 
 interface Props {

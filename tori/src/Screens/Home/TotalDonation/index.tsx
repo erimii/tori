@@ -10,7 +10,6 @@ const Container = Styled.View`
     position:absolute;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    z-index:100;
 `;
 
 const Explain = Styled.Text`

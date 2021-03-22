@@ -53,11 +53,11 @@ const GiveNTakeTab = () => {
                 component={Notice}
                 options={{title: '알림'}}
             />
-            <Stack.Screen
+            {/* <Stack.Screen
                 name="Detail"
                 component={Detail}
                 options={{title: 'Detail'}}
-            />
+            /> */}
             <Stack.Screen
                 name="BrandDetail"
                 component={BrandDetail}
@@ -103,8 +103,21 @@ const MyPageTab = () => {
     )
 }
 
+const DetailNavigator = () => {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen
+                name="Detail"
+                component={Detail}
+                options={{title:'디테일'}}
+            />
+        </Stack.Navigator>
+    )
+}
+
 const MainBottomTabs = () =>{
     return(
+        <>
         <BottomTab.Navigator
             /* tabBarOptions={{showLabel:false}} */> 
             <BottomTab.Screen
@@ -168,14 +181,33 @@ const MainBottomTabs = () =>{
                 }}
             />
         </BottomTab.Navigator>
+    </>
+    );
+};
+
+const MainNavigator = () => {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen
+                name="MainBottomTabs"
+                component={MainBottomTabs}
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen
+                name="Detail"
+                component={Detail}
+                options={{title:'이건 또 뭘까'}}
+            />
+        </Stack.Navigator>
     )
 }
-
 
 export default () => {
     return(
         <NavigationContainer>
-            <MainBottomTabs/>
+            <MainNavigator/>
         </NavigationContainer>
     )
 }
